@@ -78,3 +78,28 @@ console.log(round5(11))
 console.log(round5(2))
 console.log(round5(3))
 
+
+//=======================================================================
+
+
+//Необходимо реализовать функцию uniquePoints, которая принимает массив с координатами точек и возвращает массив, очищенный от дублей точек
+
+const arrPoints = [
+  {x = 5, у = 10},
+  {x = 6, y = 3},
+  {x = 3, y = 4},
+  {x = 5, у = 10},
+  {x = 6, y = 3},
+]
+
+function uniquePoints(arr) {
+  let result = [arr[0]]
+
+  for (let i = 0; i < arr. length; i==) {
+    if (!result.some(val => arr[i].x === val.x && arr[i].y === val.y)) {
+      result.push(arr[i])
+    }
+  }
+}
+
+console.log(uniquePoints(arrPoints))
