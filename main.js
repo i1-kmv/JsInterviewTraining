@@ -119,14 +119,62 @@
 
 // Написать функцию которая принимает целое положительное число и возвращает массив , в котором в убывающем порядке будут лежать числа от числа до нуля включительно, кратные трем 
 
-function getArr(num) {
-  let arr = []
-  for(let i = num; i >= 0; i--) {
-    if (i % 3 === 0 || i === 0) {
-       arr.push(i)
+// function getArr(num) {
+//   let arr = []
+//   for(let i = num; i >= 0; i--) {
+//     if (i % 3 === 0 || i === 0) {
+//        arr.push(i)
+//     }
+//   }
+//   return arr
+// }
+
+// console.log(getArr(22))
+
+//=======================================================================
+
+// Функция принимает массив ир возвращает сумму чисел, которые записаны в четных индексах массива
+
+// function getEvenElementsSum(arr) {
+//   return arr.filter((el, index) => index % 2 === 0).reduce((acc, el) => acc += el)
+// }
+
+// console.log(getEvenElementsSum([5, 7, -1, 12, 3, 0]))
+// console.log(getEvenElementsSum([4, -12, 29, 6, 31, 2, -50]))
+
+//=======================================================================
+
+// Написать функцию, которая принимает три числа, функция должна вернуть массив чисел, которые лежат в промежутке между a и b и делятся без остатка на на с
+
+// function filter(a, b, c) {
+//   let arr = []
+//   for (let i = a; i <= b; i++)
+//   if (i % c === 0) {
+//     arr.push(i)
+//   }
+//   return arr
+// }
+
+// console.log(filter(5, 15, 3))
+
+
+//=======================================================================
+
+//D функцию передается строка, содержащая английскиие буквы, функция фолжна вернуть массив, содержащий все возможные комбинации букв. Повторяющихся строк в массиве быть не должно.
+
+function getLettersVariant(str) {
+  if (str.length === 1) {
+    return [str]
+  }
+  const arr = []
+  for (let i = 0; i < str.length; i++) {
+    const variants = getLettersVariant(str.slice(0,1) + str.slice(i + 1))
+    for (const variant of variants) {
+      if (!arr.includes(str[i] + variant)){
+        arr.push(str[i] + variant)
+      }
     }
   }
-  return arr
 }
 
-console.log(getArr(22))
+console.log(getLettersVariant('asdd'))
