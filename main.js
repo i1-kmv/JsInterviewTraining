@@ -162,19 +162,47 @@
 
 //D функцию передается строка, содержащая английскиие буквы, функция фолжна вернуть массив, содержащий все возможные комбинации букв. Повторяющихся строк в массиве быть не должно.
 
-function getLettersVariant(str) {
-  if (str.length === 1) {
-    return [str]
-  }
-  const arr = []
-  for (let i = 0; i < str.length; i++) {
-    const variants = getLettersVariant(str.slice(0,1) + str.slice(i + 1))
-    for (const variant of variants) {
-      if (!arr.includes(str[i] + variant)){
-        arr.push(str[i] + variant)
-      }
-    }
-  }
+// function getLettersVariant(str) {
+//   if (str.length === 1) {
+//     return [str]
+//   }
+//   const arr = []
+//   for (let i = 0; i < str.length; i++) {
+//     const variants = getLettersVariant(str.slice(0,1) + str.slice(i + 1))
+//     for (const variant of variants) {
+//       if (!arr.includes(str[i] + variant)){
+//         arr.push(str[i] + variant)
+//       }
+//     }
+//   }
+// }
+
+// console.log(getLettersVariant('asdd'))
+
+//Необходимо создать функцию encode, которая будет принимать строку с буквами на английском языке, нужно сделать так, чтобы из функции возвращалась строка в которой все гласные буквы замененеы на цифры 
+
+// a -> 1
+// e -> 2
+// i -> 3
+// a -> 4
+// u -> 5
+
+// также нужно написать функцию decode, которая будет принимать зашифрованную строку и возвращать восстановленную 
+
+function encode(str) {
+  let arr = ['a', 'e', 'i', 'o', 'u']
+  return str.split('').map(elem => {
+    let index = arr.indexOf(elem)
+    return index !== -1 ? index + 1 : elem 
+  }).join('')
 }
 
-console.log(getLettersVariant('asdd'))
+function decode(str) {
+  const obj = {1: 'a', 2: 'e', 3: 'i', 4: 'o', 5: 'u'}
+  return str.split('').map(elem => {
+    return isNaN(elem) ? elem : obj[elem]
+  }).join('')
+}
+
+console.log(encode('hello'))
+console.log(decode(encode('hello')))
