@@ -189,20 +189,53 @@
 
 // также нужно написать функцию decode, которая будет принимать зашифрованную строку и возвращать восстановленную 
 
-function encode(str) {
-  let arr = ['a', 'e', 'i', 'o', 'u']
-  return str.split('').map(elem => {
-    let index = arr.indexOf(elem)
-    return index !== -1 ? index + 1 : elem 
-  }).join('')
+// function encode(str) {
+//   let arr = ['a', 'e', 'i', 'o', 'u']
+//   return str.split('').map(elem => {
+//     let index = arr.indexOf(elem)
+//     return index !== -1 ? index + 1 : elem 
+//   }).join('')
+// }
+
+// function decode(str) {
+//   const obj = {1: 'a', 2: 'e', 3: 'i', 4: 'o', 5: 'u'}
+//   return str.split('').map(elem => {
+//     return isNaN(elem) ? elem : obj[elem]
+//   }).join('')
+// }
+
+// console.log(encode('hello'))
+// console.log(decode(encode('hello')))
+
+
+// Функция calculate принимает массив, нужно реализовать функцию так, чтобы она возвращала сумму чисел под главной диагональю матрицы
+
+function calculate(array) {
+    let summ = []
+    for (let i = 0; i <= array.length-1; i++) {
+      array[i].slice(0, i).forEach(elem => {
+        summ.push(elem)
+      });
+    }
+    return summ.reduce((sum,current) => sum + current)
 }
 
-function decode(str) {
-  const obj = {1: 'a', 2: 'e', 3: 'i', 4: 'o', 5: 'u'}
-  return str.split('').map(elem => {
-    return isNaN(elem) ? elem : obj[elem]
-  }).join('')
-}
+const arr = [
+  [5, 9, -1],
+  [1, 7, 2],
+  [6, 4, 14]
+]
 
-console.log(encode('hello'))
-console.log(decode(encode('hello')))
+console.log(calculate(arr))
+
+const arr2 = [
+  [5, 73, 9, 81, -6],
+  [1, 8, 22, 18, -66],
+  [57, 7, -19, 8, 0],
+  [2, -7, 54, 1, 33],
+  [6, 21, 38, -4, 11]
+]
+
+console.log(calculate(arr2))
+
+
