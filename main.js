@@ -210,32 +210,38 @@
 
 // Функция calculate принимает массив, нужно реализовать функцию так, чтобы она возвращала сумму чисел под главной диагональю матрицы
 
-function calculate(array) {
-    let summ = []
-    for (let i = 0; i <= array.length-1; i++) {
-      array[i].slice(0, i).forEach(elem => {
-        summ.push(elem)
-      });
-    }
-    return summ.reduce((sum,current) => sum + current)
+// function calculate(array) {
+//     let summ = []
+//     for (let i = 0; i <= array.length-1; i++) {
+//       array[i].slice(0, i).forEach(elem => {
+//         summ.push(elem)
+//       });
+//     }
+//     return summ.reduce((sum,current) => sum + current)
+// }
+
+// const arr = [
+//   [5, 9, -1],
+//   [1, 7, 2],
+//   [6, 4, 14]
+// ]
+
+// console.log(calculate(arr))
+
+// const arr2 = [
+//   [5, 73, 9, 81, -6],
+//   [1, 8, 22, 18, -66],
+//   [57, 7, -19, 8, 0],
+//   [2, -7, 54, 1, 33],
+//   [6, 21, 38, -4, 11]
+// ]
+
+// console.log(calculate(arr2))
+ 
+// В функцию передается строка, вернуть true, если строка содержит только буквы и цифры, иначе false
+
+function alphanumeric(string) {
+  return /^[0-9a-z]+$/i.test(string)
 }
-
-const arr = [
-  [5, 9, -1],
-  [1, 7, 2],
-  [6, 4, 14]
-]
-
-console.log(calculate(arr))
-
-const arr2 = [
-  [5, 73, 9, 81, -6],
-  [1, 8, 22, 18, -66],
-  [57, 7, -19, 8, 0],
-  [2, -7, 54, 1, 33],
-  [6, 21, 38, -4, 11]
-]
-
-console.log(calculate(arr2))
-
-
+console.log(alphanumeric('hello_'))
+console.log(alphanumeric('hello55'))
