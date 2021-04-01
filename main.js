@@ -316,3 +316,8 @@
 //   return fiboArr[numm]
 // }
 
+const divisions = (n, divisor) => {
+  return Math.floor(Math.log(n)/Math.log(divisor))
+};
+
+console.log(divisions(100, 2))
